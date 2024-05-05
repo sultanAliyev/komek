@@ -7,11 +7,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "programs")
-public class Program {
+public class Program implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
