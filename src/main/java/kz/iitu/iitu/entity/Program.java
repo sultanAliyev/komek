@@ -17,6 +17,8 @@ public class Program {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private ProgramType type;
+
     private String title;
 
     private String description;
@@ -36,6 +38,14 @@ public class Program {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public ProgramType getType() {
+        return type;
+    }
+
+    public void setType(ProgramType type) {
+        this.type = type;
     }
 
     public String getTitle() {
