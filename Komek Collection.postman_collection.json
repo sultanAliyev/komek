@@ -178,7 +178,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"example@gmail.com\",\r\n    \"username\": \"someUsername\",\r\n    \"password\": \"somePassword\"\r\n}",
+							"raw": "{\r\n    \"email\": \"example@gmail.com\",\r\n    \"username\": \"example@gmail.com\",\r\n    \"password\": \"somePassword\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -186,14 +186,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/register",
+							"raw": "http://localhost:8080/auth/register",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"api",
+								"auth",
 								"register"
 							]
 						}
@@ -215,14 +215,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/login",
+							"raw": "http://localhost:8080/auth/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"api",
+								"auth",
 								"login"
 							]
 						}
