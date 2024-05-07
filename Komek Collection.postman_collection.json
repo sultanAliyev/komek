@@ -88,6 +88,87 @@
 			]
 		},
 		{
+			"name": "Applications",
+			"item": [
+				{
+					"name": "Read-All-Applications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/applications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"applications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read-Application",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/applications/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"applications",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create-Application",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Kudaybergen\",\r\n    \"lastName\": \"Dimash\",\r\n    \"address\": \"Almaty, Mustafina 130a\",\r\n    \"email\": \"dimash@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/applications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"applications"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Programs",
 			"item": [
 				{
