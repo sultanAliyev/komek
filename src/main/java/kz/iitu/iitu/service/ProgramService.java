@@ -31,9 +31,11 @@ public class ProgramService {
     }
 
     public void donate(Long id, Transaction transaction) {
-        var application = this.getProgram(id);
+        var program = this.getProgram(id);
 
-        application.setCurrentAmount(transaction.getAmount() + application.getCurrentAmount());
+        program.setCurrentAmount(transaction.getAmount() + program.getCurrentAmount());
+
+        programRepository.save(program);
     }
 
 }
