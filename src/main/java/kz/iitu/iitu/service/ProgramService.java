@@ -1,6 +1,7 @@
 package kz.iitu.iitu.service;
 
 import kz.iitu.iitu.entity.Program;
+import kz.iitu.iitu.entity.Transaction;
 import kz.iitu.iitu.repository.ProgramRepository;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,12 @@ public class ProgramService {
     public Program createProgram(Program program) {
         program.setCreatedAt(LocalDate.now());
         return programRepository.save(program);
+    }
+
+    public void donate(Long id, Transaction transaction) {
+        var application = this.getProgram(id);
+
+        application.setCurrentAmount(transaction.getAmount() + application.getCurrentAmount());
     }
 
 }

@@ -1,6 +1,7 @@
 package kz.iitu.iitu.service;
 
 import kz.iitu.iitu.entity.CreditCard;
+import kz.iitu.iitu.entity.Transaction;
 import kz.iitu.iitu.entity.User;
 import kz.iitu.iitu.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -25,9 +26,14 @@ public class UserService {
     }
 
     public List<CreditCard> getCreditCardsByUserId(User user) {
-        // Fetch the list of CreditCard entities by user ID
         List<CreditCard> creditCards = user.getCreditCards();
 
         return creditCards;
+    }
+
+    public List<Transaction> getTransactionsByUserId(User user) {
+        List<Transaction> transactions = user.getTransactions();
+
+        return transactions;
     }
 }

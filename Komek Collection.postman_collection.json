@@ -49,7 +49,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "-1"
 								}
 							]
 						}
@@ -292,7 +292,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "-1"
 								}
 							]
 						}
@@ -323,6 +323,43 @@
 							"path": [
 								"api",
 								"programs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Donation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Помощь пострадавшим от наводнения\",\r\n    \"amount\": 100,\r\n    \"type\": \"OneTime\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/programs/:id/donation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"programs",
+								":id",
+								"donation"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "-1"
+								}
 							]
 						}
 					},
@@ -394,7 +431,7 @@
 			]
 		},
 		{
-			"name": "User",
+			"name": "Users",
 			"item": [
 				{
 					"name": "Get-Current-User",
@@ -412,6 +449,31 @@
 								"api",
 								"users",
 								"current"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Read-All-Transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions"
 							]
 						}
 					},

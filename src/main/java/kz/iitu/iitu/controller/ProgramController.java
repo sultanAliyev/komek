@@ -1,7 +1,10 @@
 package kz.iitu.iitu.controller;
 
+import kz.iitu.iitu.dto.TransactionDto;
 import kz.iitu.iitu.entity.Program;
+import kz.iitu.iitu.entity.Transaction;
 import kz.iitu.iitu.service.ProgramService;
+import kz.iitu.iitu.service.TransactionService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,9 +19,12 @@ import java.util.List;
 public class ProgramController {
 
     private final ProgramService programService;
+    private final TransactionService transactionService;
 
-    public ProgramController(ProgramService programService) {
+    public ProgramController(ProgramService programService,
+                             TransactionService transactionService) {
         this.programService = programService;
+        this.transactionService = transactionService;
     }
 
     @GetMapping
@@ -34,6 +40,13 @@ public class ProgramController {
     @PostMapping
     public Program createNews(@RequestBody Program program) {
         return programService.createProgram(program);
+    }
+
+    @PostMapping("/{id}/donation")
+    public TransactionDto donation(@PathVariable Long id,
+                                   @RequestBody Transaction transaction) {
+        programService.donate(id, transaction);
+        return transactionService.createTransaction(transaction);
     }
 
 }
