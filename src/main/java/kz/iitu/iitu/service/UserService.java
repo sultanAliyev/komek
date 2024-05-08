@@ -1,11 +1,11 @@
 package kz.iitu.iitu.service;
 
+import kz.iitu.iitu.entity.CreditCard;
 import kz.iitu.iitu.entity.User;
 import kz.iitu.iitu.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -24,21 +24,10 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    public User register(User user) {
-        user.setAccountOpened(false);
-        return userRepository.save(user);
-    }
+    public List<CreditCard> getCreditCardsByUserId(User user) {
+        // Fetch the list of CreditCard entities by user ID
+        List<CreditCard> creditCards = user.getCreditCards();
 
-    public User login(User user) {
-        Optional<User> userOpt = userRepository.findByEmail(user.getEmail());
-
-        if (userOpt.isPresent()) {
-           var currentUser = userOpt.get();
-            if (currentUser.getPassword().equals(user.getPassword())) {
-                return currentUser;
-            }
-        }
-
-        return null;
+        return creditCards;
     }
 }

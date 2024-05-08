@@ -88,6 +88,87 @@
 			]
 		},
 		{
+			"name": "Credit Cards",
+			"item": [
+				{
+					"name": "Read-All-Credit-Cards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/credit-cards",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"credit-cards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read-Credit-Card",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/credit-cards/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"credit-cards",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add-Credit-Card",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"holderName \": \"Example Name\",\r\n    \"cardNumber\": \"4111 111111111111\",\r\n    \"expirationDate\": \"2026-05-05\",\r\n    \"cvv\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/credit-cards",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"credit-cards"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Applications",
 			"item": [
 				{
