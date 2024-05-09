@@ -31,6 +31,11 @@ public class GlobalExceptionHandler {
         // TODO send this stack trace to an observability tool
         exception.printStackTrace();
 
+        if (exception instanceof AccountAlreadyExistsException) {
+            errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(403), exception.getMessage());
+            errorDetail.setProperty("description", "Account Already Exists");
+        }
+
         if (exception instanceof BadCredentialsException) {
             errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(401), exception.getMessage());
             errorDetail.setProperty("description", "The username or password is incorrect");

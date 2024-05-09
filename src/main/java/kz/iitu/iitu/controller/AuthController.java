@@ -4,6 +4,8 @@ import kz.iitu.iitu.dto.LoginResponse;
 import kz.iitu.iitu.dto.LoginUserDto;
 import kz.iitu.iitu.dto.RegisterUserDto;
 import kz.iitu.iitu.entity.User;
+import kz.iitu.iitu.exception.AccountAlreadyExistsException;
+import kz.iitu.iitu.repository.UserRepository;
 import kz.iitu.iitu.service.AuthenticationService;
 import kz.iitu.iitu.service.JwtService;
 import org.springframework.http.ResponseEntity;
@@ -19,16 +21,26 @@ public class AuthController {
     private final JwtService jwtService;
 
     private final AuthenticationService authenticationService;
+    private final UserRepository userRepository;
 
     public AuthController(
             JwtService jwtService,
-            AuthenticationService authenticationService) {
+            AuthenticationService authenticationService,
+            UserRepository userRepository) {
         this.jwtService = jwtService;
         this.authenticationService = authenticationService;
+        this.userRepository = userRepository;
     }
 
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) {
+
+        var user = userRepository.findByEmail(registerUserDto.getEmail());
+
+        if (user.isPresent()) {
+            throw new AccountAlreadyExistsException("Account Already Exists");
+        }
+
         User registeredUser = authenticationService.signup(registerUserDto);
 
         return ResponseEntity.ok(registeredUser);
