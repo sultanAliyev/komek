@@ -62,7 +62,7 @@ public class ProgramController {
     }
 
     @PostMapping
-    public Program createNews(@RequestBody Program program) {
+    public Program createProgram(@RequestBody Program program) {
         return programService.createProgram(program);
     }
 

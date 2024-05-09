@@ -23,6 +23,8 @@ public class Program implements Serializable {
 
     private String title;
 
+    private String address;
+
     @Column(columnDefinition = "TEXT")
     private String description;
 
@@ -57,6 +59,14 @@ public class Program implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getDescription() {
