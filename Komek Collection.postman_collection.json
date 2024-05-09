@@ -258,7 +258,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/programs",
+							"raw": "http://localhost:8080/api/programs?type=all",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -267,6 +267,27 @@
 							"path": [
 								"api",
 								"programs"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "all"
+								},
+								{
+									"key": "type",
+									"value": "volunteering",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "monetary",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "rallypoint",
+									"disabled": true
+								}
 							]
 						}
 					},

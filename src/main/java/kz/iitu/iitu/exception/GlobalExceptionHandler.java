@@ -1,14 +1,20 @@
 package kz.iitu.iitu.exception;
 
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.lang.Maps;
 import io.jsonwebtoken.security.SignatureException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ProblemDetail;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AccountStatusException;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.Map;
 
 /**
  * GlobalExceptionHandler.
@@ -58,5 +64,12 @@ public class GlobalExceptionHandler {
         }
 
         return errorDetail;
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<Map<String, String>> handleMissingParams(MissingServletRequestParameterException ex) {
+        String parameterName = ex.getParameterName();
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                             .body(Maps.of("message", parameterName + "' is missing").build());
     }
 }
