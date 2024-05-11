@@ -37,6 +37,10 @@ public class Program implements Serializable {
 
     private Integer currentAmount;
 
+    private Double latitude;
+
+    private Double longitude;
+
     public Long getId() {
         return id;
     }
@@ -107,5 +111,21 @@ public class Program implements Serializable {
 
     public void setCurrentAmount(Integer currentAmount) {
         this.currentAmount = currentAmount;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 }
