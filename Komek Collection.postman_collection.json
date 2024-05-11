@@ -327,7 +327,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"Monetary\",\r\n    \"title\": \"Example Title\",\r\n    \"address\": \"Example Address\",\r\n    \"description\": \"Example description\",\r\n    \"createdAt\": \"2024-05-05\",\r\n    \"posterUrl\": \"https://pbs.twimg.com/profile_images/1694731396730789888/gEfNsQnC_400x400.jpg\",\r\n    \"maxAmount\": 190500,\r\n    \"currentAmount\": 500\r\n}",
+							"raw": "{\r\n    \"type\": \"Monetary\",\r\n    \"title\": \"Example Title\",\r\n    \"address\": \"Example Address\",\r\n    \"description\": \"Example description\",\r\n    \"createdAt\": \"2024-05-05\",\r\n    \"posterUrl\": \"https://pbs.twimg.com/profile_images/1694731396730789888/gEfNsQnC_400x400.jpg\",\r\n    \"maxAmount\": 190500,\r\n    \"currentAmount\": 500,\r\n    \"latitude\": 123.123,\r\n    \"longitude\": 123.123\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
