@@ -8,9 +8,11 @@ import kz.iitu.iitu.service.CreditCardService;
 import kz.iitu.iitu.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,13 +33,17 @@ public class CreditCardController {
     }
 
     @GetMapping
-    public List<CreditCardDto> getAllCreditCards() {
+    public CreditCardDto getAllCreditCards() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         var currentUser = (User) authentication.getPrincipal();
 
-        return userService.getCreditCardsByUserId(currentUser).stream()
-                .map(creditCardService::mapToDto)
-                .toList();
+        List<CreditCardDto> creditCardDtos = userService.getCreditCardsByUserId(currentUser).stream()
+                                                        .map(creditCardService::mapToDto)
+                                                        .toList();
+        if (creditCardDtos.isEmpty()) {
+            return null;
+        }
+        return creditCardDtos.get(0);
     }
 
     @GetMapping("/{id}")
@@ -49,6 +55,17 @@ public class CreditCardController {
     public CreditCardDto addCreditCard(@Valid @RequestBody CreditCard creditCard) {
         var creditCardObj = creditCardService.addCreditCard(creditCard);
         return creditCardService.mapToDto(creditCardObj);
+    }
+
+    @PutMapping
+    public CreditCardDto updateCreditCard(@Valid @RequestBody CreditCard creditCard) {
+        var creditCardObj = creditCardService.updateCreditCard(creditCard);
+        return creditCardService.mapToDto(creditCardObj);
+    }
+
+    @DeleteMapping
+    public void deleteCreditCard() {
+        creditCardService.deleteCreditCard();
     }
 
 }

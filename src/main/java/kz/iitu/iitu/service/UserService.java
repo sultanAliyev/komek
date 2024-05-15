@@ -1,5 +1,6 @@
 package kz.iitu.iitu.service;
 
+import kz.iitu.iitu.dto.UserDto;
 import kz.iitu.iitu.entity.CreditCard;
 import kz.iitu.iitu.entity.Transaction;
 import kz.iitu.iitu.entity.User;
@@ -21,8 +22,9 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUser(Long id) {
-        return userRepository.findById(id).orElse(null);
+    public UserDto getUser(Long id) {
+        User user = userRepository.findById(id).orElse(null);
+        return this.mapUserToDto(user);
     }
 
     public List<CreditCard> getCreditCardsByUserId(User user) {
@@ -35,5 +37,18 @@ public class UserService {
         List<Transaction> transactions = user.getTransactions();
 
         return transactions;
+    }
+
+    private UserDto mapUserToDto(User user) {
+        UserDto dto = new UserDto();
+        dto.setId(user.getId());
+        dto.setEmail(user.getEmail());
+        dto.setUsername(user.getUsername());
+        dto.setPassword(user.getPassword());
+        dto.setAccountOpened(user.getAccountOpened());
+        dto.setFirstName(user.getFirstName());
+        dto.setLastName(user.getLastName());
+
+        return dto;
     }
 }

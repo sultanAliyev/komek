@@ -1,5 +1,6 @@
 package kz.iitu.iitu.controller;
 
+import kz.iitu.iitu.dto.UserDto;
 import kz.iitu.iitu.entity.User;
 import kz.iitu.iitu.service.UserService;
 import org.springframework.security.core.Authentication;
@@ -26,7 +27,7 @@ public class CurrentUserController {
     }
 
     @GetMapping
-    public User getCurrentUser() {
+    public UserDto getCurrentUser() {
        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
        var currentUser = (User) authentication.getPrincipal();
 

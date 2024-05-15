@@ -38,6 +38,21 @@ public class CreditCardService {
         return creditCardRepository.save(creditCard);
     }
 
+    public CreditCard updateCreditCard(CreditCard creditCard) {
+        CreditCard creditCard1 = getCreditCard(1L);
+        creditCard1.setHolderName(creditCard.getHolderName());
+        creditCard1.setCardNumber(creditCard.getCardNumber());
+        creditCard1.setExpirationDate(creditCard.getExpirationDate());
+        creditCard1.setCvv(creditCard.getCvv());
+
+        return creditCardRepository.save(creditCard1);
+    }
+
+    public void deleteCreditCard() {
+        CreditCard creditCard = getCreditCard(1L);
+        this.creditCardRepository.delete(creditCard);
+    }
+
     public CreditCardDto mapToDto(CreditCard creditCard) {
         CreditCardDto creditCardDto = new CreditCardDto();
         creditCardDto.setId(creditCard.getId());
@@ -48,5 +63,4 @@ public class CreditCardService {
 
         return creditCardDto;
     }
-
 }
