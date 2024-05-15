@@ -1,7 +1,10 @@
 package kz.iitu.iitu.controller;
 
 import kz.iitu.iitu.entity.Application;
+import kz.iitu.iitu.entity.User;
 import kz.iitu.iitu.service.ApplicationService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +26,12 @@ public class ApplicationController {
 
     @GetMapping
     public List<Application> getAllApplications() {
-        return applicationService.getAllApplications();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        var currentUser = (User) authentication.getPrincipal();
+
+        return applicationService.getAllApplications().stream()
+                .filter(application -> application.getEmail().equals(currentUser.getEmail()))
+                .toList();
     }
 
     @GetMapping("/{id}")
@@ -33,7 +41,10 @@ public class ApplicationController {
 
     @PostMapping
     public Application createApplication(@RequestBody Application application) {
-        return applicationService.createApplication(application);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        var currentUser = (User) authentication.getPrincipal();
+
+        return applicationService.createApplication(application, currentUser);
     }
 
 }

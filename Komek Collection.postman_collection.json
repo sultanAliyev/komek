@@ -225,7 +225,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"firstName\": \"Kudaybergen\",\r\n    \"lastName\": \"Dimash\",\r\n    \"address\": \"Almaty, Mustafina 130a\",\r\n    \"email\": \"dimash@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"address\": \"Almaty, Mustafina 130a\",\r\n    \"programId\": 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -30,6 +30,10 @@ public class Application implements Serializable {
     @CreatedDate
     private LocalDate createdAt;
 
+    private Long programId;
+
+    private Boolean submited;
+
     public Long getId() {
         return id;
     }
@@ -76,5 +80,21 @@ public class Application implements Serializable {
 
     public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Long getProgramId() {
+        return programId;
+    }
+
+    public void setProgramId(Long programId) {
+        this.programId = programId;
+    }
+
+    public Boolean getSubmited() {
+        return submited;
+    }
+
+    public void setSubmited(Boolean submited) {
+        this.submited = submited;
     }
 }
