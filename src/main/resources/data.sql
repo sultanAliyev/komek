@@ -37,7 +37,7 @@ values (-5, 'Кадры из затопленного Петропавловск
   +----------------------+
 */
 
-insert into programs(id, type, title, address, description, poster_url, created_at, max_amount, current_amount, latitude, longitude)
+insert into programs(id, type, title, address, description, poster_url, created_at, max_amount, current_amount, latitude, longitude, submitted_count)
 values (-1, 0, 'Волонтёрство', 'Алматы, Розыбакиева 320', 'В Южной столице открыт пункт приема гуманитарной помощи для пострадавших от наводнения. ' ||
 'В Алматы открыт пункт сбора гуманитарной помощи для пострадавших от наводнения в разных регионах Казахстана. Об этом сообщила пресс-служба акимата южной столицы.
 Граждане могут сдать вещи в общественный центр Алмалинского района по адресу: Байтурсынова, 22/1. ' ||
@@ -51,9 +51,9 @@ values (-1, 0, 'Волонтёрство', 'Алматы, Розыбакиева
 товары для дома (палатки, матрасы, термосы, фонарики, аккумуляторы, чайники, детская посуда, пустышки и многое другое);
 средства гигиены (подгузники, средства женской гигиены, мыло, зубная паста, шампуни, салфетки, туалетная бумага, моющие средства и т.д.).',
 'https://img.freepik.com/premium-vector/flood-rescue-teams-are-helping-children-women-out-floods_353206-207.jpg', '2024-05-05',
-null, null, 43.210419, 76.893623);
+null, null, 43.210419, 76.893623, 0);
 
-insert into programs(id, type, title, address, description, poster_url, created_at, max_amount, current_amount, latitude, longitude)
+insert into programs(id, type, title, address, description, poster_url, created_at, max_amount, current_amount, latitude, longitude, submitted_count)
 values (-2, 0, 'Волонтёрство', 'Алматы, Розыбакиева 320', 'В Южной столице открыт пункт приема гуманитарной помощи для пострадавших от наводнения. ' ||
 'В Алматы открыт пункт сбора гуманитарной помощи для пострадавших от наводнения в разных регионах Казахстана. Об этом сообщила пресс-служба акимата южной столицы.
 Граждане могут сдать вещи в общественный центр Алмалинского района по адресу: Байтурсынова, 22/1. ' ||
@@ -67,9 +67,9 @@ values (-2, 0, 'Волонтёрство', 'Алматы, Розыбакиева
 товары для дома (палатки, матрасы, термосы, фонарики, аккумуляторы, чайники, детская посуда, пустышки и многое другое);
 средства гигиены (подгузники, средства женской гигиены, мыло, зубная паста, шампуни, салфетки, туалетная бумага, моющие средства и т.д.).',
 'https://img.freepik.com/premium-vector/flood-rescue-teams-are-helping-children-women-out-floods_353206-207.jpg', '2024-05-05',
-null, null, 43.210419, 76.893623);
+null, null, 43.210419, 76.893623, 0);
 
-insert into programs(id, type, title, address, description, poster_url, created_at, max_amount, current_amount, latitude, longitude)
+insert into programs(id, type, title, address, description, poster_url, created_at, max_amount, current_amount, latitude, longitude, submitted_count)
 values (-3, 0, 'Волонтёрство', 'Алматы, Розыбакиева 320', 'В Южной столице открыт пункт приема гуманитарной помощи для пострадавших от наводнения. ' ||
 'В Алматы открыт пункт сбора гуманитарной помощи для пострадавших от наводнения в разных регионах Казахстана. Об этом сообщила пресс-служба акимата южной столицы.
 Граждане могут сдать вещи в общественный центр Алмалинского района по адресу: Байтурсынова, 22/1. ' ||
@@ -83,7 +83,7 @@ values (-3, 0, 'Волонтёрство', 'Алматы, Розыбакиева
 товары для дома (палатки, матрасы, термосы, фонарики, аккумуляторы, чайники, детская посуда, пустышки и многое другое);
 средства гигиены (подгузники, средства женской гигиены, мыло, зубная паста, шампуни, салфетки, туалетная бумага, моющие средства и т.д.).',
 'https://img.freepik.com/premium-vector/flood-rescue-teams-are-helping-children-women-out-floods_353206-207.jpg', '2024-05-05',
-null, null, 43.210419, 76.893623);
+null, null, 43.210419, 76.893623, 0);
 
 insert into programs(id, type, title, address, description, poster_url, created_at, max_amount, current_amount, latitude, longitude)
 values (-4, 1, 'Помощь пострадавшим от наводнения', null, 'В Южной столице открыт пункт приема гуманитарной помощи для пострадавших от наводнения. ' ||

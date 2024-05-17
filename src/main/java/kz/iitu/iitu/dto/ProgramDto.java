@@ -1,26 +1,11 @@
-package kz.iitu.iitu.entity;
+package kz.iitu.iitu.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import org.springframework.data.annotation.CreatedDate;
+import kz.iitu.iitu.entity.ProgramType;
 
-import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
-@Entity
-@Table(name = "programs")
-public class Program implements Serializable {
+public class ProgramDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private ProgramType type;
@@ -29,10 +14,8 @@ public class Program implements Serializable {
 
     private String address;
 
-    @Column(columnDefinition = "TEXT")
     private String description;
 
-    @CreatedDate
     private LocalDate createdAt;
 
     private String posterUrl;
@@ -45,10 +28,9 @@ public class Program implements Serializable {
 
     private Double longitude;
 
-    private Integer submittedCount = 0;
+    private Integer submittedCount;
 
-    @OneToMany(mappedBy = "program", fetch = FetchType.EAGER)
-    private List<Application> applications = new ArrayList<>();
+    private Boolean submited;
 
     public Long getId() {
         return id;
@@ -146,11 +128,11 @@ public class Program implements Serializable {
         this.submittedCount = submittedCount;
     }
 
-    public List<Application> getApplications() {
-        return applications;
+    public Boolean getSubmited() {
+        return submited;
     }
 
-    public void setApplications(List<Application> applications) {
-        this.applications = applications;
+    public void setSubmited(Boolean submited) {
+        this.submited = submited;
     }
 }

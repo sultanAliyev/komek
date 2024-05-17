@@ -1,11 +1,15 @@
 package kz.iitu.iitu.controller;
 
+import kz.iitu.iitu.dto.ProgramDto;
 import kz.iitu.iitu.dto.TransactionDto;
 import kz.iitu.iitu.entity.Program;
 import kz.iitu.iitu.entity.ProgramType;
 import kz.iitu.iitu.entity.Transaction;
+import kz.iitu.iitu.entity.User;
 import kz.iitu.iitu.service.ProgramService;
 import kz.iitu.iitu.service.TransactionService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,26 +38,29 @@ public class ProgramController {
     }
 
     @GetMapping
-    public List<Program> getAllPrograms(@RequestParam("type") String type) {
+    public List<ProgramDto> getAllPrograms(@RequestParam("type") String type) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        var currentUser = (User) authentication.getPrincipal();
+        var email = currentUser.getEmail();
 
         if (type.equals(Volunteering)) {
-           return programService.getAllPrograms().stream()
+           return programService.getProgramsByApplicationEmail(email).stream()
                     .filter(program -> program.getType()
                                               .equals(ProgramType.Volunteering))
                     .toList();
         } else if (type.equals(Monetary)) {
-            return programService.getAllPrograms().stream()
+            return programService.getProgramsByApplicationEmail(email).stream()
                                  .filter(program -> program.getType()
                                                            .equals(ProgramType.Monetary))
                                  .toList();
         } else if (type.equals(RallyPoint)) {
-            return programService.getAllPrograms().stream()
+            return programService.getProgramsByApplicationEmail(email).stream()
                                  .filter(program -> program.getType()
                                                            .equals(ProgramType.RallyPoint))
                                  .toList();
         }
 
-        return programService.getAllPrograms();
+        return programService.getProgramsByApplicationEmail(email);
     }
 
     @GetMapping("/{id}")

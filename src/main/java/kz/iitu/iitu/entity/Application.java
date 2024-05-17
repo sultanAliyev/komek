@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -30,9 +32,11 @@ public class Application implements Serializable {
     @CreatedDate
     private LocalDate createdAt;
 
-    private Long programId;
+    private Long programRefId;
 
-    private Boolean submited;
+    @ManyToOne
+    @JoinColumn(name = "program_id")
+    private Program program;
 
     public Long getId() {
         return id;
@@ -82,19 +86,20 @@ public class Application implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public Long getProgramId() {
-        return programId;
+
+    public Program getProgram() {
+        return program;
     }
 
-    public void setProgramId(Long programId) {
-        this.programId = programId;
+    public void setProgram(Program program) {
+        this.program = program;
     }
 
-    public Boolean getSubmited() {
-        return submited;
+    public Long getProgramRefId() {
+        return programRefId;
     }
 
-    public void setSubmited(Boolean submited) {
-        this.submited = submited;
+    public void setProgramRefId(Long programRefId) {
+        this.programRefId = programRefId;
     }
 }
