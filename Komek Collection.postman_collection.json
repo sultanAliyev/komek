@@ -523,6 +523,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update-Current-User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"example@gmail.com\",\r\n    \"username\": \"example@gmail.com\",\r\n    \"password\": \"NewPassword\",\r\n    \"firstName\": \"Example\",\r\n    \"lastName\": \"Example\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/current",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"current"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
