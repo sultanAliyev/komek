@@ -1,22 +1,27 @@
 package kz.iitu.iitu.service;
 
 import kz.iitu.iitu.dto.UserDto;
+import kz.iitu.iitu.dto.UserPasswordDto;
 import kz.iitu.iitu.entity.CreditCard;
 import kz.iitu.iitu.entity.Transaction;
 import kz.iitu.iitu.entity.User;
 import kz.iitu.iitu.repository.UserRepository;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder encoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository,
+                       BCryptPasswordEncoder encoder) {
         this.userRepository = userRepository;
+        this.encoder = encoder;
     }
 
     public List<User> getAllUsers() {
@@ -28,15 +33,7 @@ public class UserService {
         return this.mapUserToDto(user);
     }
 
-    public UserDto updateUser(UserDto userDto, Long userId) {
-
-        Optional<User> userOpt = userRepository.findById(userId);
-
-        if (userOpt.isEmpty()) {
-            throw new RuntimeException("Could not find user by id " + userId);
-        }
-
-        User user = userOpt.get();
+    public UserDto updateUser(UserDto userDto, User user) {
 
         if (userDto.getEmail() != null) {
             user.setEmail(userDto.getEmail());
@@ -57,6 +54,21 @@ public class UserService {
         userRepository.save(user);
 
         return this.mapUserToDto(user);
+    }
+
+    public UserDto updatePassword(UserPasswordDto passwordDto, User user) {
+
+        var encodedPassword = user.getPassword();
+        var rawPassword = passwordDto.getOldPassword();
+
+        if (!encoder.matches(rawPassword, encodedPassword)) {
+            throw new BadCredentialsException("Incorrect old password");
+        }
+
+        user.setPassword(encoder.encode(passwordDto.getNewPassword()));
+        userRepository.save(user);
+
+        return mapUserToDto(user);
     }
 
     public List<CreditCard> getCreditCardsByUserId(User user) {

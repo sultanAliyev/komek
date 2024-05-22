@@ -553,6 +553,37 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update-Current-User-Password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"somePassword\",\r\n    \"newPassword\": \"newPassword\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/current/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"current",
+								"password"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

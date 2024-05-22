@@ -1,6 +1,7 @@
 package kz.iitu.iitu.controller;
 
 import kz.iitu.iitu.dto.UserDto;
+import kz.iitu.iitu.dto.UserPasswordDto;
 import kz.iitu.iitu.entity.User;
 import kz.iitu.iitu.service.UserService;
 import org.springframework.security.core.Authentication;
@@ -40,7 +41,15 @@ public class CurrentUserController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         var currentUser = (User) authentication.getPrincipal();
 
-        return userService.updateUser(userDto, currentUser.getId());
+        return userService.updateUser(userDto, currentUser);
+    }
+
+    @PutMapping("/password")
+    public UserDto updateCurrentUserPassword(@RequestBody UserPasswordDto passwordDto) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        var currentUser = (User) authentication.getPrincipal();
+
+        return userService.updatePassword(passwordDto, currentUser);
     }
 
 }
