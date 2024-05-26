@@ -10,7 +10,6 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import org.hibernate.validator.constraints.CreditCardNumber;
 
 import java.time.LocalDate;
 
@@ -25,7 +24,7 @@ public class CreditCard {
     @NotBlank(message = "Holder name is required")
     private String holderName;
 
-    @CreditCardNumber(message = "Invalid credit card number")
+    @Pattern(regexp = "[0-9]{16}", message = "cardNumber must be a 16-digit number")
     private String cardNumber;
 
     @FutureOrPresent(message = "Expiration date must be in the future or present")
