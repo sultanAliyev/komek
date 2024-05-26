@@ -58,9 +58,9 @@ public class CreditCardService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         var currentUser = (User) authentication.getPrincipal();
 
-        var creditCard = userService.getCreditCardsByUserId(currentUser).get(0);
+        var creditCard = currentUser.getCreditCards();
 
-        this.creditCardRepository.delete(creditCard);
+        this.creditCardRepository.deleteAll(creditCard);
     }
 
     public CreditCardDto mapToDto(CreditCard creditCard) {
