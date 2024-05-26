@@ -15,9 +15,12 @@ import java.util.List;
 public class CreditCardService {
 
     private final CreditCardRepository creditCardRepository;
+    private final UserService userService;
 
-    public CreditCardService(CreditCardRepository creditCardRepository) {
+    public CreditCardService(CreditCardRepository creditCardRepository,
+                             UserService userService) {
         this.creditCardRepository = creditCardRepository;
+        this.userService = userService;
     }
 
     public List<CreditCard> getAllCreditCards() {
@@ -39,7 +42,10 @@ public class CreditCardService {
     }
 
     public CreditCard updateCreditCard(CreditCard creditCard) {
-        CreditCard creditCard1 = getCreditCard(1L);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        var currentUser = (User) authentication.getPrincipal();
+
+        var creditCard1 = userService.getCreditCardsByUserId(currentUser).get(0);
         creditCard1.setHolderName(creditCard.getHolderName());
         creditCard1.setCardNumber(creditCard.getCardNumber());
         creditCard1.setExpirationDate(creditCard.getExpirationDate());
@@ -49,7 +55,11 @@ public class CreditCardService {
     }
 
     public void deleteCreditCard() {
-        CreditCard creditCard = getCreditCard(1L);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        var currentUser = (User) authentication.getPrincipal();
+
+        var creditCard = userService.getCreditCardsByUserId(currentUser).get(0);
+
         this.creditCardRepository.delete(creditCard);
     }
 
