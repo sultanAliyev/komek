@@ -6,6 +6,7 @@ import kz.iitu.iitu.entity.User;
 import kz.iitu.iitu.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequestMapping("/api/users/current")
 @RestController
+@CrossOrigin
 public class CurrentUserController {
 
     private final UserService userService;
@@ -30,10 +32,10 @@ public class CurrentUserController {
 
     @GetMapping
     public UserDto getCurrentUser() {
-       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-       var currentUser = (User) authentication.getPrincipal();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        var currentUser = (User) authentication.getPrincipal();
 
-       return userService.getUser(currentUser.getId());
+        return userService.getUser(currentUser.getId());
     }
 
     @PutMapping

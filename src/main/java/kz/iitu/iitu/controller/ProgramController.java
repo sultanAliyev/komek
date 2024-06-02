@@ -10,6 +10,7 @@ import kz.iitu.iitu.service.ProgramService;
 import kz.iitu.iitu.service.TransactionService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/programs")
+@CrossOrigin
 public class ProgramController {
 
     private final ProgramService programService;
@@ -44,20 +46,20 @@ public class ProgramController {
         var email = currentUser.getEmail();
 
         if (type.equals(Volunteering)) {
-           return programService.getProgramsByApplicationEmail(email).stream()
+            return programService.getProgramsByApplicationEmail(email).stream()
                     .filter(program -> program.getType()
-                                              .equals(ProgramType.Volunteering))
+                            .equals(ProgramType.Volunteering))
                     .toList();
         } else if (type.equals(Monetary)) {
             return programService.getProgramsByApplicationEmail(email).stream()
-                                 .filter(program -> program.getType()
-                                                           .equals(ProgramType.Monetary))
-                                 .toList();
+                    .filter(program -> program.getType()
+                            .equals(ProgramType.Monetary))
+                    .toList();
         } else if (type.equals(RallyPoint)) {
             return programService.getProgramsByApplicationEmail(email).stream()
-                                 .filter(program -> program.getType()
-                                                           .equals(ProgramType.RallyPoint))
-                                 .toList();
+                    .filter(program -> program.getType()
+                            .equals(ProgramType.RallyPoint))
+                    .toList();
         }
 
         return programService.getProgramsByApplicationEmail(email);

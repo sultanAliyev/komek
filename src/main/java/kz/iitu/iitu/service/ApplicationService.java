@@ -42,8 +42,8 @@ public class ApplicationService {
         }
 
         var submittedCount = getAllApplications().stream()
-                            .filter(appli -> appli.getProgramRefId().equals(program.getId()))
-                            .count() + 1;
+                .filter(appli -> appli.getProgramRefId().equals(program.getId()))
+                .count() + 1;
         program.setSubmittedCount((int) submittedCount);
 
         programService.save(program);

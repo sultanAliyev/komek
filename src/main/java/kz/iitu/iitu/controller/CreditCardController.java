@@ -8,6 +8,7 @@ import kz.iitu.iitu.service.CreditCardService;
 import kz.iitu.iitu.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/credit-cards")
+@CrossOrigin
 public class CreditCardController {
 
     private final CreditCardService creditCardService;
@@ -38,8 +40,8 @@ public class CreditCardController {
         var currentUser = (User) authentication.getPrincipal();
 
         List<CreditCardDto> creditCardDtos = userService.getCreditCardsByUserId(currentUser).stream()
-                                                        .map(creditCardService::mapToDto)
-                                                        .toList();
+                .map(creditCardService::mapToDto)
+                .toList();
         if (creditCardDtos.isEmpty()) {
             return null;
         }

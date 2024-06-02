@@ -27,7 +27,7 @@ public class AuthenticationService {
             UserRepository userRepository,
             AuthenticationManager authenticationManager,
             PasswordEncoder passwordEncoder
-                                ) {
+    ) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -49,9 +49,9 @@ public class AuthenticationService {
                         input.getEmail(),
                         input.getPassword()
                 )
-                                          );
+        );
 
         return userRepository.findByEmail(input.getEmail())
-                             .orElseThrow();
+                .orElseThrow();
     }
 }

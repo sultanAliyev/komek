@@ -80,6 +80,6 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleMissingParams(MissingServletRequestParameterException ex) {
         String parameterName = ex.getParameterName();
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                             .body(Maps.of("message", parameterName + "' is missing").build());
+                .body(Maps.of("message", parameterName + "' is missing").build());
     }
 }

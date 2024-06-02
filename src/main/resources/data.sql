@@ -57,7 +57,7 @@ VALUES
      'We invite everyone willing to join in cleaning up the parks and squares of the city. Lets make our city cleaner and more beautiful together. All necessary tools will be provided.',
 'https://vinedisposal.com/AoOJmJbG1m8wSPOR58q4RG7KGRdXBYB81655215859.jpg',
 '2024-05-10',
-null, null, 43.238949, 76.889709, 245);
+null, null, 43.238949, 76.889709, 0);
 
 INSERT INTO programs(id, type, title, address, description, poster_url, created_at, max_amount, current_amount, latitude, longitude, submitted_count)
 VALUES
@@ -65,7 +65,7 @@ VALUES
      'We invite all willing to help in taking care of homeless animals. Opportunities include feeding, walking, cleaning premises, and other necessary tasks.',
      'https://www.azpetvet.com/wp-content/uploads/AdobeStock_323070499-1024x683.jpeg',
      '2024-05-15',
-     null, null, 43.210419, 76.893623, 158);
+     null, null, 43.210419, 76.893623, 0);
 
 INSERT INTO programs(id, type, title, address, description, poster_url, created_at, max_amount, current_amount, latitude, longitude, submitted_count)
 VALUES
@@ -73,7 +73,7 @@ VALUES
      'We invite all gardening enthusiasts to join in working at community gardens. Tasks include caring for plants, weeding, fertilizing, and organizing new plantings.',
      'https://missouriindependent.com/wp-content/uploads/2023/05/CommunityGarden1-FangXiaNuo-scaled.jpg',
      '2024-05-20',
-     null, null, 43.210419, 76.893623, 158);
+     null, null, 43.210419, 76.893623, 0);
 
 INSERT INTO programs(id, type, title, address, description, poster_url, created_at, max_amount, current_amount, latitude, longitude, submitted_count)
 VALUES
@@ -81,7 +81,7 @@ VALUES
      'We invite volunteers to help elderly people in care homes. Tasks may include assistance with daily activities, organizing entertainment events, and spending time with the elderly.',
      'https://www.nursinghomeabusecenter.com/wp-content/uploads/2019/11/happy-seniors-nursing-home.png',
      '2024-05-25',
-     null, null, 43.210419, 76.893623, 158);
+     null, null, 43.210419, 76.893623, 0);
 
 INSERT INTO programs(id, type, title, address, description, poster_url, created_at, max_amount, current_amount, latitude, longitude, submitted_count)
 VALUES
@@ -89,7 +89,7 @@ VALUES
      'We invite volunteers to help children with disabilities in children centers. Tasks may include assistance with lessons, organizing entertainment events, and individual work with children.',
      'https://www.freedommotors.com/wp-content/uploads/2023/03/Untitled-design-1024x683-1.jpg',
      '2024-05-30',
-     null, null, 43.210419, 76.893623, 158);
+     null, null, 43.210419, 76.893623, 0);
 
 
 
@@ -100,11 +100,11 @@ values
                                                          'The funds will be used to purchase school supplies, clothing, toys, and develop the infrastructure of orphanages.' ||
                                                          'The collection point is located at: Abay Street, 54, Nur-Sultan.' ||
                                                          'Working hours: from 09:00 to 18:00.' ||
-                                                         'Necessary items include:
-                                                         - School supplies (notebooks, pens, backpacks, etc.);
-                                                         - Clothing (warm clothes, shoes, underwear, socks, etc.);
-                                                         - Toys and educational games;
-                                                         - Hygiene products (soap, toothpaste, shampoos, etc.).',
+                                                         'Necessary items include:' ||
+                                                         '- School supplies (notebooks, pens, backpacks, etc.);' ||
+                                                         '- Clothing (warm clothes, shoes, underwear, socks, etc.);' ||
+                                                         '- Toys and educational games;' ||
+                                                         '- Hygiene products (soap, toothpaste, shampoos, etc.).',
      'https://cdn5.vectorstock.com/i/1000x1000/22/84/people-caring-disabled-donating-to-orphans-vector-34592284.jpg', '2024-05-10',
      500000, 250000, null, null);
 
@@ -114,10 +114,10 @@ values
                                                       'The organization "Silver Age" accepts donations to purchase food, medicines, and other necessary items for the elderly.' ||
                                                       'The collection point is located at: Panfilov Street, 80, Almaty.' ||
                                                       'Working hours: from 09:00 to 17:00.' ||
-                                                      'List of necessary items:
-                                                      - Food products (groats, canned goods, oil, etc.);
-                                                      - Medicines and consumables (bandages, ointments, plasters, etc.);
-                                                      - Hygiene products (adult diapers, soap, shampoos, etc.).',
+                                                      'List of necessary items:' ||
+                                                      '- Food products (groats, canned goods, oil, etc.);' ||
+                                                      '- Medicines and consumables (bandages, ointments, plasters, etc.);' ||
+                                                      '- Hygiene products (adult diapers, soap, shampoos, etc.).',
      'https://img.freepik.com/premium-vector/elderly-couple-receives-bag-groceries-from-man-food-order-service-volunteers-help-pensioners-courier-delivery-charity-box-person-carrying-purchase-door-vector-concept_533410-3254.jpg', '2024-05-12',
      300000, 120000, null, null);
 
@@ -128,10 +128,10 @@ values
                                                                               'The organization "Future of Kazakhstan" is collecting donations for the construction of a modern educational institution.' ||
                                                                               'Donations can be brought to: Central Street, 12, Karabulak village.' ||
                                                                               'Working hours: from 08:00 to 20:00.' ||
-                                                                              'Necessary donations:
-                                                                              - Building materials (bricks, cement, glass, etc.);
-                                                                              - Educational equipment (desks, boards, computers, etc.);
-                                                                              - School supplies (books, notebooks, pens, etc.).',
+                                                                              'Necessary donations:' ||
+                                                                              '- Building materials (bricks, cement, glass, etc.);' ||
+                                                                              '- Educational equipment (desks, boards, computers, etc.);' ||
+                                                                              '- School supplies (books, notebooks, pens, etc.).',
      'https://www.shutterstock.com/image-vector/donation-school-poor-child-support-260nw-2171875259.jpg', '2024-05-15',
      2000000, 750000, null, null);
 
@@ -141,10 +141,10 @@ values
 'The donations will be used for treatments, medicines, and supporting the families of the patients.' ||
 'Collection point is located at: Dostyk Avenue, 100, Almaty.' ||
 'Working hours: from 10:00 to 19:00.' ||
-'Needed donations include:
-- Funds for medical treatments;
-- Medicines (chemotherapy drugs, pain relief, etc.);
-- Support for families (food, accommodation, etc.).',
+'Needed donations include:' ||
+'- Funds for medical treatments;' ||
+'- Medicines (chemotherapy drugs, pain relief, etc.);' ||
+'- Support for families (food, accommodation, etc.).',
      'https://www.shutterstock.com/image-vector/sick-children-hospital-beds-bandages-600nw-467333753.jpg', '2024-05-20',
      1500000, 800000, null, null);
 
@@ -154,11 +154,11 @@ values
                                                                   'The fund aims to support the victims with food, water, shelter, and medical supplies.' ||
                                                                   'Donations can be made at the headquarters located at: Republic Square, 1, Nur-Sultan.' ||
                                                                   'Working hours: 24/7.' ||
-                                                                  'Required items:
-                                                                  - Non-perishable food items;
-                                                                  - Bottled water;
-                                                                  - Temporary shelters (tents, blankets, etc.);
-                                                                  - Medical supplies (first aid kits, bandages, etc.).',
+                                                                  'Required items:' ||
+                                                                  '- Non-perishable food items;' ||
+                                                                  '- Bottled water;' ||
+                                                                  '- Temporary shelters (tents, blankets, etc.);' ||
+                                                                  '- Medical supplies (first aid kits, bandages, etc.).',
      'https://media.istockphoto.com/id/1211986075/vector/flood-rescue-banner-cartoon-family-in-boat-saved-by-natural-disaster-relief-team.jpg?s=612x612&w=0&k=20&c=8RS9zBzCjD5YcL-ODftfGBcAe-6L0M7-JIcyayvDbLA=', '2024-05-25',
      3000000, 1500000, null, null);
 

@@ -6,6 +6,7 @@ import kz.iitu.iitu.service.TransactionService;
 import kz.iitu.iitu.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/transactions")
+@CrossOrigin
 public class TransactionController {
 
     private final TransactionService transactionService;
@@ -31,8 +33,8 @@ public class TransactionController {
         var currentUser = (User) authentication.getPrincipal();
 
         return userService.getTransactionsByUserId(currentUser).stream()
-                          .map(transactionService::mapToDto)
-                          .toList();
+                .map(transactionService::mapToDto)
+                .toList();
     }
 
 }

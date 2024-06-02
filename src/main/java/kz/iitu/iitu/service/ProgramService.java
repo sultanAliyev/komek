@@ -26,8 +26,8 @@ public class ProgramService {
 
     public List<ProgramDto> getProgramsByApplicationEmail(String email) {
         return programRepository.findAll().stream()
-                                .map(program -> mapToProgramDto(program, email))
-                                .collect(toList());
+                .map(program -> mapToProgramDto(program, email))
+                .collect(toList());
     }
 
     public Program getProgram(Long id) {
@@ -68,7 +68,7 @@ public class ProgramService {
         dto.setSubmittedCount(program.getSubmittedCount());
 
         boolean hasMatchingApplication = program.getApplications().stream()
-                                                .anyMatch(application -> application.getEmail().equals(email));
+                .anyMatch(application -> application.getEmail().equals(email));
 
         dto.setSubmited(hasMatchingApplication);
 

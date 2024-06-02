@@ -2,6 +2,7 @@ package kz.iitu.iitu.controller;
 
 import kz.iitu.iitu.entity.News;
 import kz.iitu.iitu.service.NewsService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/news")
+@CrossOrigin
 public class NewsController {
 
     private final NewsService newsService;
